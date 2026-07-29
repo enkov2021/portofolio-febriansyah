@@ -15,9 +15,9 @@
       --surface-2: #2a3a52;
       --text: #f8fafc;
       --text-muted: #c8d0dc;
-      --primary: #fcfcfd;
-      --primary-2: #fdfdff;
-      --accent: #fafbfa;
+      --primary: #f3f4f6;
+      --primary-2: #fcfdff;
+      --accent: #f8fbfa;
       --radius: 1rem;
       --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       --max-width: 1120px;
@@ -237,26 +237,6 @@
       object-fit: cover;
     }
 
-    .hero-image .badge {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      right: 1.5rem;
-      background: rgba(0, 5, 15, 0.85);
-      backdrop-filter: blur(8px);
-      padding: 0.75rem 1.25rem;
-      border-radius: 0.75rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .hero-image .badge strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
     section {
       padding: 6rem 0;
     }
@@ -307,23 +287,6 @@
 
     .about-card p {
       color: var(--text-muted);
-    }
-
-    .stat-row {
-      display: flex;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .stat h3 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .stat p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
     }
 
     .timeline {
@@ -473,12 +436,6 @@
       object-fit: cover;
     }
 
-    .project-thumb .emoji-bg {
-      font-size: 4rem;
-      opacity: 0.3;
-      position: absolute;
-    }
-
     .project-thumb .label {
       position: relative;
       z-index: 1;
@@ -560,11 +517,6 @@
       flex: 1;
     }
 
-    .card-item .icon {
-      font-size: 2rem;
-      display: block;
-    }
-
     .card-item h4 {
       font-size: 1rem;
       margin-bottom: 0.25rem;
@@ -628,6 +580,29 @@
       transform: translateY(0);
     }
 
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+      color: var(--text-muted);
+      gap: 1rem;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--surface-2);
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     @media (max-width: 900px) {
       .hero-grid,
       .about-grid {
@@ -645,11 +620,6 @@
 
       .menu-btn {
         display: block;
-      }
-
-      .stat-row {
-        flex-wrap: wrap;
-        gap: 1rem;
       }
 
       .about-card {
@@ -738,9 +708,6 @@
         </div>
         <div class="hero-image reveal">
           <img id="hero-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Febriansyah" />
-          <div class="badge" id="hero-badge">
-            <strong>🚀 5+ Tahun</strong> · Pengalaman di bidang pengembangan web
-          </div>
         </div>
       </div>
     </section>
@@ -761,9 +728,6 @@
             kolaborasi yang erat dengan klien, saya memastikan setiap solusi yang saya bangun tidak hanya
             memenuhi kebutuhan teknis, tetapi juga memberikan dampak positif bagi pengguna.
           </p>
-          <div class="stat-row" id="stats-container">
-            <!-- Stats will be rendered by JavaScript -->
-          </div>
         </div>
         <div class="reveal">
           <img id="about-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Ruang kerja Febriansyah" style="border-radius: var(--radius); box-shadow: var(--shadow);" />
@@ -812,12 +776,12 @@
           <p>Pengakuan atas dedikasi dan kompetensi di bidang pengembangan web.</p>
         </div>
         
-        <h3 style="color: #fcfbfa; margin-bottom: 1.5rem; font-size: 1.2rem;">Penghargaan</h3>
+        <h3 style="color: #f8f7f7; margin-bottom: 1.5rem; font-size: 1.2rem;">Penghargaan</h3>
         <div class="grid-2col reveal" id="awards-container">
           <!-- Awards rendered by JavaScript -->
         </div>
 
-        <h3 style="color: #fdfefe; margin: 3rem 0 1.5rem; font-size: 1.2rem;">Sertifikasi</h3>
+        <h3 style="color: #f6faf8; margin: 3rem 0 1.5rem; font-size: 1.2rem;">Sertifikasi</h3>
         <div class="grid-2col reveal" id="certification-container">
           <!-- Certifications rendered by JavaScript -->
         </div>
@@ -856,146 +820,211 @@
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> <span id="footer-name">Febriansyah</span> — Dibuat dengan ❤️</p>
+      <p>&copy; <span id="year"></span> <span id="footer-name">Febriansyah</span>
     </div>
   </footer>
 
   <script>
     // ============================================================
-    // 1. GOOGLE SHEETS CONFIGURATION
+    // 1. GOOGLE SHEETS PUBLISHED CSV URLs
     // ============================================================
-    // Ganti dengan URL Google Apps Script Web App Anda
-    const SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbwMebOUTSwV6EhFg6xYmhCltBWC-i4pkDF0iUzAWWgN4hdCYNp4DjhIeuAtW30KWa4gIw/exec';
-    
-    // Data lokal sebagai fallback (dengan foto)
-    const LOCAL_DATA = {
-      profile: {
-        name: 'Febriansyah',
-        title: 'Web Developer',
-        subtitle: 'Halo, saya',
-        description: 'Saya membangun pengalaman digital yang elegan, fungsional, dan berorientasi pada hasil. Dengan fokus pada kualitas kode dan desain yang intuitif, saya siap membantu mewujudkan ide Anda.',
-        badge: '🚀 5+ Tahun · Pengalaman di bidang pengembangan web',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-        about_sub: 'Tentang Saya',
-        about_title: 'Membangun Solusi Digital',
-        about_text1: 'Saya Febriansyah, seorang pengembang web yang berdedikasi dengan pengalaman lebih dari 5 tahun dalam membangun aplikasi web yang responsif, scalable, dan user-friendly. Saya memiliki passion dalam memecahkan masalah kompleks dengan pendekatan yang sederhana dan elegan.',
-        about_text2: 'Saya percaya bahwa setiap proyek adalah kesempatan untuk belajar dan berinovasi. Dengan kolaborasi yang erat dengan klien, saya memastikan setiap solusi yang saya bangun tidak hanya memenuhi kebutuhan teknis, tetapi juga memberikan dampak positif bagi pengguna.',
-        about_image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-        stats: [
-          { number: '5+', label: 'Tahun Pengalaman' },
-          { number: '30+', label: 'Proyek Selesai' },
-          { number: '12+', label: 'Klien Puas' }
-        ],
-        contact_text: 'Punya ide atau proyek menarik? Saya siap membantu mewujudkannya. Kirim pesan dan saya akan segera merespons.',
-        contacts: [
-          { type: 'email', label: '📧 febriansyah@email.com', url: 'febriansyah@email.com' },
-          { type: 'linkedin', label: '💼 LinkedIn', url: 'https://linkedin.com/in/febriansyah' },
-          { type: 'github', label: '🐙 GitHub', url: 'https://github.com/febriansyah' }
-        ]
-      },
-      education: [
-        { 
-          date: '2018 - 2022', 
-          title: 'S1 Informatika', 
-          subtitle: 'Universitas Teknologi Indonesia', 
-          description: 'IPK 3.85 - Fokus pada pengembangan web dan kecerdasan buatan.',
-          image: 'https://images.unsplash.com/photo-1523050854058-8df90110c7f1?auto=format&fit=crop&w=400&q=80'
-        }
-      ],
-      internship: [
-        { 
-          date: '2021 - 2022', 
-          title: 'Full Stack Developer Intern', 
-          subtitle: 'PT Teknologi Kreatif', 
-          description: 'Mengembangkan aplikasi web untuk manajemen inventaris perusahaan dengan React dan Node.js.',
-          image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80'
-        }
-      ],
-      organization: [
-        { 
-          date: '2020 - 2021', 
-          title: 'Ketua Divisi Web Development', 
-          subtitle: 'Himpunan Mahasiswa Informatika', 
-          description: 'Memimpin tim pengembangan website himpunan dan pelatihan web development untuk 50+ anggota.',
-          image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=400&q=80'
-        }
-      ],
-      awards: [
-        { 
-          icon: '🥇', 
-          title: 'Juara 1 Hackathon Nasional', 
-          issuer: 'Kementerian Kominfo', 
-          date: '2022',
-          image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80'
-        }
-      ],
-      certification: [
-        { 
-          icon: '📘', 
-          title: 'Full Stack Web Development', 
-          issuer: 'Dicoding Indonesia', 
-          date: '2023',
-          image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=400&q=80'
-        }
-      ],
-      projects: [
-        { 
-          emoji: '🛒', 
-          label: 'E-Commerce Platform', 
-          title: 'MarketHub', 
-          description: 'Platform e-commerce modern dengan fitur real-time inventory, payment gateway, dan dashboard analytics untuk merchant.',
-          tags: ['React', 'Node.js', 'Tailwind'],
-          image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80'
-        },
-        { 
-          emoji: '📊', 
-          label: 'Dashboard Analytics', 
-          title: 'InsightPro', 
-          description: 'Dashboard analytics interaktif untuk visualisasi data bisnis dengan chart real-time dan export laporan otomatis.',
-          tags: ['Next.js', 'TypeScript', 'API'],
-          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
-        },
-        { 
-          emoji: '📱', 
-          label: 'Mobile App UI', 
-          title: 'FitTrack', 
-          description: 'Desain UI/UX untuk aplikasi kesehatan dan kebugaran dengan fokus pada pengalaman pengguna yang intuitif dan engaging.',
-          tags: ['Figma', 'UI/UX', 'Prototype'],
-          image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80'
-        }
-      ]
+    const SHEET_URLS = {
+      profile: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=0&single=true&output=csv',
+      education: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=225249204&single=true&output=csv',
+      internship: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=314849816&single=true&output=csv',
+      organization: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=498639503&single=true&output=csv',
+      awards: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=100740730&single=true&output=csv',
+      certification: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=409936969&single=true&output=csv',
+      projects: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=1484667794&single=true&output=csv'
     };
 
     // ============================================================
-    // 2. DATA FETCHING
+    // 2. DATA STORE
     // ============================================================
-    let portfolioData = LOCAL_DATA;
+    let portfolioData = {
+      profile: {},
+      education: [],
+      internship: [],
+      organization: [],
+      awards: [],
+      certification: [],
+      projects: []
+    };
 
-    async function fetchData() {
-      try {
-        const response = await fetch(SHEETS_API_URL);
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        if (data && data.status === 'success') {
-          portfolioData = data.data;
-          console.log('✅ Data loaded from Google Sheets');
-        } else {
-          console.warn('⚠️ Using local data as fallback');
-        }
-      } catch (error) {
-        console.warn('⚠️ Using local data as fallback:', error.message);
+    // ============================================================
+    // 3. CSV PARSING FUNCTION
+    // ============================================================
+    function parseCSV(csvText) {
+      const lines = csvText.split('\n').filter(line => line.trim() !== '');
+      if (lines.length < 2) return [];
+      
+      const headers = parseCSVLine(lines[0]);
+      const rows = [];
+      
+      for (let i = 1; i < lines.length; i++) {
+        const values = parseCSVLine(lines[i]);
+        const obj = {};
+        headers.forEach((header, index) => {
+          obj[header.trim()] = (values[index] || '').trim();
+        });
+        rows.push(obj);
       }
+      
+      return rows;
+    }
+
+    function parseCSVLine(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        
+        if (char === '"') {
+          if (inQuotes && line[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (char === ',' && !inQuotes) {
+          result.push(current.trim());
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      
+      result.push(current.trim());
+      return result;
+    }
+
+    // ============================================================
+    // 4. DATA FETCHING FROM MULTIPLE SHEETS
+    // ============================================================
+    async function fetchAllSheets() {
+      const loadingContainer = document.createElement('div');
+      loadingContainer.className = 'loading-spinner';
+      loadingContainer.innerHTML = `
+        <div class="spinner"></div>
+        <span>Memuat data dari Google Sheets...</span>
+      `;
+      
+      const containers = [
+        'education-container', 'internship-container', 'organization-container',
+        'awards-container', 'certification-container', 'projects-container'
+      ];
+      containers.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.innerHTML = '';
+          el.appendChild(loadingContainer.cloneNode(true));
+        }
+      });
+
+      try {
+        const fetchPromises = Object.entries(SHEET_URLS).map(async ([key, url]) => {
+          try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const csvText = await response.text();
+            const data = parseCSV(csvText);
+            return { key, data, success: true };
+          } catch (error) {
+            console.warn(`Gagal mengambil data dari sheet "${key}":`, error.message);
+            return { key, data: [], success: false };
+          }
+        });
+
+        const results = await Promise.all(fetchPromises);
+        
+        results.forEach(({ key, data, success }) => {
+          if (success && data.length > 0) {
+            if (key === 'profile' && data.length > 0) {
+              const profileObj = {};
+              data.forEach(item => {
+                for (const [k, v] of Object.entries(item)) {
+                  if (k !== 'key') {
+                    profileObj[k] = v;
+                  }
+                }
+              });
+              data.forEach(item => {
+                if (item.key) {
+                  profileObj[item.key] = item.value || '';
+                }
+              });
+              portfolioData.profile = profileObj;
+            } else {
+              portfolioData[key] = data;
+            }
+            console.log(`Sheet "${key}" loaded: ${data.length} rows`);
+          } else {
+            console.warn(`Sheet "${key}" empty or failed to load`);
+          }
+        });
+
+        if (Object.keys(portfolioData.profile).length === 0) {
+          console.warn('Using local fallback data');
+          portfolioData = getFallbackData();
+        }
+
+      } catch (error) {
+        console.error('Error fetching sheets:', error);
+        portfolioData = getFallbackData();
+      }
+
       renderAll();
     }
 
     // ============================================================
-    // 3. RENDER FUNCTIONS
+    // 5. FALLBACK DATA
+    // ============================================================
+    function getFallbackData() {
+      return {
+        profile: {
+          name: 'Febriansyah',
+          title: 'Web Developer',
+          subtitle: 'Halo, saya',
+          description: 'Saya membangun pengalaman digital yang elegan, fungsional, dan berorientasi pada hasil.',
+          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+          about_sub: 'Tentang Saya',
+          about_title: 'Membangun Solusi Digital',
+          about_text1: 'Saya Febriansyah, seorang pengembang web yang berdedikasi dengan pengalaman lebih dari 5 tahun.',
+          about_text2: 'Saya percaya bahwa setiap proyek adalah kesempatan untuk belajar dan berinovasi.',
+          about_image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+          contact_text: 'Punya ide atau proyek menarik? Saya siap membantu mewujudkannya.'
+        },
+        education: [
+          { date: '2018 - 2022', title: 'S1 Informatika', subtitle: 'Universitas Teknologi Indonesia', description: 'IPK 3.85 - Fokus pada pengembangan web.', image: '' }
+        ],
+        internship: [
+          { date: '2021 - 2022', title: 'Full Stack Developer Intern', subtitle: 'PT Teknologi Kreatif', description: 'Mengembangkan aplikasi web.', image: '' }
+        ],
+        organization: [
+          { date: '2020 - 2021', title: 'Ketua Divisi Web Development', subtitle: 'Himpunan Mahasiswa Informatika', description: 'Memimpin tim pengembangan website.', image: '' }
+        ],
+        awards: [
+          { title: 'Juara 1 Hackathon Nasional', issuer: 'Kementerian Kominfo', date: '2022', image: '' }
+        ],
+        certification: [
+          { title: 'Full Stack Web Development', issuer: 'Dicoding Indonesia', date: '2023', image: '' }
+        ],
+        projects: [
+          { label: 'E-Commerce Platform', title: 'MarketHub', description: 'Platform e-commerce modern.', tags: ['React', 'Node.js'], image: '' }
+        ]
+      };
+    }
+
+    // ============================================================
+    // 6. RENDER FUNCTIONS
     // ============================================================
     function renderAll() {
       renderProfile();
-      renderEducation();
-      renderInternship();
-      renderOrganization();
+      renderTimelineItems('education-container', portfolioData.education);
+      renderTimelineItems('internship-container', portfolioData.internship);
+      renderTimelineItems('organization-container', portfolioData.organization);
       renderAwards();
       renderCertifications();
       renderProjects();
@@ -1005,11 +1034,10 @@
     function renderProfile() {
       const p = portfolioData.profile;
       
-      document.getElementById('hero-subtitle').textContent = p.subtitle || '👋 Halo, saya';
+      document.getElementById('hero-subtitle').textContent = p.subtitle || 'Halo, saya';
       document.getElementById('hero-name').textContent = p.name || 'Febriansyah';
       document.getElementById('hero-title').textContent = p.title || 'Web Developer';
       document.getElementById('hero-description').textContent = p.description || '';
-      document.getElementById('hero-badge').innerHTML = p.badge || '🚀 5+ Tahun · Pengalaman';
       
       const heroImg = document.getElementById('hero-image');
       if (p.image) heroImg.src = p.image;
@@ -1022,39 +1050,28 @@
       const aboutImg = document.getElementById('about-image');
       if (p.about_image) aboutImg.src = p.about_image;
       
-      const statsContainer = document.getElementById('stats-container');
-      statsContainer.innerHTML = '';
-      if (p.stats && p.stats.length > 0) {
-        p.stats.forEach(stat => {
-          const div = document.createElement('div');
-          div.className = 'stat';
-          div.innerHTML = `<h3>${stat.number}</h3><p>${stat.label}</p>`;
-          statsContainer.appendChild(div);
-        });
-      }
-      
       document.getElementById('footer-name').textContent = p.name || 'Febriansyah';
-      document.getElementById('contact-text').textContent = p.contact_text || '';
+      document.getElementById('contact-text').textContent = p.contact_text || 'Punya ide atau proyek menarik?';
     }
 
-    function renderTimelineItems(containerId, items, className = 'timeline') {
+    function renderTimelineItems(containerId, items) {
       const container = document.getElementById(containerId);
       container.innerHTML = '';
       if (!items || items.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Belum ada data.</p>';
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 2rem;">Belum ada data.</p>';
         return;
       }
       
       const wrapper = document.createElement('div');
-      wrapper.className = className + ' reveal';
+      wrapper.className = 'timeline reveal';
       
       items.forEach(item => {
         const div = document.createElement('div');
         div.className = 'timeline-item';
         
         const imageHtml = item.image ? 
-          `<div class="timeline-image"><img src="${item.image}" alt="${item.title}" loading="lazy" /></div>` :
-          `<div class="timeline-image" style="display:flex;align-items:center;justify-content:center;font-size:2rem;">📷</div>`;
+          `<div class="timeline-image"><img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none';" /></div>` :
+          `<div class="timeline-image" style="display:none;"></div>`;
         
         div.innerHTML = `
           ${imageHtml}
@@ -1071,34 +1088,22 @@
       container.appendChild(wrapper);
     }
 
-    function renderEducation() {
-      renderTimelineItems('education-container', portfolioData.education);
-    }
-
-    function renderInternship() {
-      renderTimelineItems('internship-container', portfolioData.internship);
-    }
-
-    function renderOrganization() {
-      renderTimelineItems('organization-container', portfolioData.organization);
-    }
-
     function renderAwards() {
       const container = document.getElementById('awards-container');
       container.innerHTML = '';
       const items = portfolioData.awards || [];
       if (items.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1;">Belum ada data.</p>';
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">Belum ada data.</p>';
         return;
       }
       
       items.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'card-item';
+        div.className = 'card-item reveal';
         
         const imageHtml = item.image ? 
-          `<div class="card-image"><img src="${item.image}" alt="${item.title}" loading="lazy" /></div>` :
-          `<div class="card-image" style="display:flex;align-items:center;justify-content:center;font-size:2.5rem;">${item.icon || '🏆'}</div>`;
+          `<div class="card-image"><img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none';" /></div>` :
+          `<div class="card-image" style="display:none;"></div>`;
         
         div.innerHTML = `
           ${imageHtml}
@@ -1117,17 +1122,17 @@
       container.innerHTML = '';
       const items = portfolioData.certification || [];
       if (items.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1;">Belum ada data.</p>';
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">Belum ada data.</p>';
         return;
       }
       
       items.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'card-item';
+        div.className = 'card-item reveal';
         
         const imageHtml = item.image ? 
-          `<div class="card-image"><img src="${item.image}" alt="${item.title}" loading="lazy" /></div>` :
-          `<div class="card-image" style="display:flex;align-items:center;justify-content:center;font-size:2.5rem;">${item.icon || '📜'}</div>`;
+          `<div class="card-image"><img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none';" /></div>` :
+          `<div class="card-image" style="display:none;"></div>`;
         
         div.innerHTML = `
           ${imageHtml}
@@ -1146,17 +1151,17 @@
       container.innerHTML = '';
       const items = portfolioData.projects || [];
       if (items.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1;">Belum ada data.</p>';
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1; padding: 2rem;">Belum ada data.</p>';
         return;
       }
       
       items.forEach(item => {
         const div = document.createElement('article');
-        div.className = 'project-card';
+        div.className = 'project-card reveal';
         
         const imageHtml = item.image ? 
-          `<img src="${item.image}" alt="${item.title}" loading="lazy" />` :
-          `<span class="emoji-bg">${item.emoji || '📁'}</span><span class="label">${item.label || 'Proyek'}</span>`;
+          `<img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.parentElement.innerHTML='<span class=\\'label\\'>${item.label || 'Proyek'}</span>';" />` :
+          `<span class="label">${item.label || 'Proyek'}</span>`;
         
         div.innerHTML = `
           <div class="project-thumb">
@@ -1177,29 +1182,30 @@
     function renderContact() {
       const container = document.getElementById('contact-links');
       container.innerHTML = '';
-      const items = portfolioData.profile?.contacts || [];
-      items.forEach(item => {
-        const a = document.createElement('a');
-        a.className = item.type === 'email' ? 'btn btn-primary' : 'btn btn-ghost';
-        a.textContent = item.label || '';
-        
-        if (item.type === 'email') {
-          a.href = `mailto:${item.url || ''}`;
-        } else {
-          a.href = item.url || '#';
-          a.target = '_blank';
-          a.rel = 'noopener';
-        }
-        container.appendChild(a);
-      });
+      
+      const email = portfolioData.profile?.email || 'febriansyah@email.com';
+      const linkedin = portfolioData.profile?.linkedin || 'https://linkedin.com/in/febriansyah';
+      
+      const emailBtn = document.createElement('a');
+      emailBtn.className = 'btn btn-primary';
+      emailBtn.href = `mailto:${email}`;
+      emailBtn.textContent = email;
+      container.appendChild(emailBtn);
+      
+      const linkedinBtn = document.createElement('a');
+      linkedinBtn.className = 'btn btn-ghost';
+      linkedinBtn.href = linkedin;
+      linkedinBtn.target = '_blank';
+      linkedinBtn.rel = 'noopener';
+      linkedinBtn.textContent = 'LinkedIn';
+      container.appendChild(linkedinBtn);
     }
 
     // ============================================================
-    // 4. INITIALIZATION
+    // 7. INITIALIZATION
     // ============================================================
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Intersection Observer for reveal animation
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -1213,7 +1219,6 @@
     );
     revealElements.forEach((el) => observer.observe(el));
 
-    // Mobile menu
     const menuBtn = document.querySelector('.menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
@@ -1258,8 +1263,7 @@
       }
     });
 
-    // Load data
-    fetchData();
+    fetchAllSheets();
   </script>
 </body>
 </html>
