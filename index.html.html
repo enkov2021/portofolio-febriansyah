@@ -11,15 +11,15 @@
   <style>
     :root {
       --bg: #00050f;
-      --surface: #1e293b;
-      --surface-2: #334155;
+      --surface: #1a2332;
+      --surface-2: #2a3a52;
       --text: #f8fafc;
-      --text-muted: #f9f9f9;
-      --primary: #fafcfd;
-      --primary-2: #f4f4f8;
-      --accent: #fafcfc;
+      --text-muted: #c8d0dc;
+      --primary: #fcfcfd;
+      --primary-2: #fdfdff;
+      --accent: #fafbfa;
       --radius: 1rem;
-      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       --max-width: 1120px;
     }
 
@@ -61,7 +61,7 @@
       inset: 0 0 auto 0;
       z-index: 100;
       backdrop-filter: blur(12px);
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(0, 5, 15, 0.85);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
@@ -158,7 +158,7 @@
       right: -10%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.18), transparent 60%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 60%);
       pointer-events: none;
     }
 
@@ -169,7 +169,7 @@
       left: -10%;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(129, 140, 248, 0.12), transparent 60%);
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.10), transparent 60%);
       pointer-events: none;
     }
 
@@ -235,7 +235,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.85;
     }
 
     .hero-image .badge {
@@ -243,7 +242,7 @@
       bottom: 1.5rem;
       left: 1.5rem;
       right: 1.5rem;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(0, 5, 15, 0.85);
       backdrop-filter: blur(8px);
       padding: 0.75rem 1.25rem;
       border-radius: 0.75rem;
@@ -279,7 +278,6 @@
       color: var(--text-muted);
     }
 
-    /* About */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -328,7 +326,6 @@
       font-size: 0.9rem;
     }
 
-    /* Education & Experience */
     .timeline {
       position: relative;
       padding-left: 2rem;
@@ -348,6 +345,9 @@
       position: relative;
       margin-bottom: 2.5rem;
       padding-left: 1.5rem;
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.5rem;
     }
 
     .timeline-item::before {
@@ -361,6 +361,26 @@
       background: var(--primary);
       border: 2px solid var(--bg);
       box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+    }
+
+    .timeline-item .timeline-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      object-fit: cover;
+      background: var(--surface-2);
+      flex-shrink: 0;
+    }
+
+    .timeline-item .timeline-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .timeline-item .timeline-content {
+      flex: 1;
     }
 
     .timeline-item .date {
@@ -387,7 +407,6 @@
       font-size: 0.9rem;
     }
 
-    /* Skills */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -416,10 +435,9 @@
       margin-bottom: 0.35rem;
     }
 
-    /* Projects */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.5rem;
     }
 
@@ -449,6 +467,12 @@
       overflow: hidden;
     }
 
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .project-thumb .emoji-bg {
       font-size: 4rem;
       opacity: 0.3;
@@ -458,7 +482,7 @@
     .project-thumb .label {
       position: relative;
       z-index: 1;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(0, 5, 15, 0.7);
       padding: 0.5rem 1.25rem;
       border-radius: 999px;
       backdrop-filter: blur(4px);
@@ -495,10 +519,9 @@
       color: var(--primary);
     }
 
-    /* Awards & Certifications */
     .grid-2col {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
     }
 
@@ -508,6 +531,9 @@
       border-radius: var(--radius);
       padding: 1.5rem;
       transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
     }
 
     .card-item:hover {
@@ -515,9 +541,27 @@
       border-color: rgba(56, 189, 248, 0.2);
     }
 
+    .card-item .card-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--surface-2);
+    }
+
+    .card-item .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-item .card-content {
+      flex: 1;
+    }
+
     .card-item .icon {
       font-size: 2rem;
-      margin-bottom: 0.5rem;
       display: block;
     }
 
@@ -538,7 +582,6 @@
       margin-top: 0.25rem;
     }
 
-    /* Contact */
     .contact-card {
       background: var(--surface);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -585,26 +628,6 @@
       transform: translateY(0);
     }
 
-    /* Loading */
-    .loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 200px;
-      color: var(--text-muted);
-    }
-
-    .loading::after {
-      content: "⏳";
-      animation: spin 1s linear infinite;
-      margin-left: 0.5rem;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     @media (max-width: 900px) {
       .hero-grid,
       .about-grid {
@@ -635,6 +658,27 @@
 
       .contact-card {
         padding: 2rem 1.5rem;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .timeline-item .timeline-image {
+        width: 80px;
+        height: 80px;
+      }
+
+      .card-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .card-item .card-image {
+        width: 100px;
+        height: 100px;
       }
     }
 
@@ -734,13 +778,13 @@
           <h2>Pendidikan</h2>
           <p>Perjalanan akademis yang membentuk dasar pengetahuan dan keterampilan saya.</p>
         </div>
-        <div class="timeline reveal" id="education-container">
+        <div id="education-container">
           <!-- Education items rendered by JavaScript -->
         </div>
       </div>
     </section>
 
-    <!-- Experience Section (Internship & Organization) -->
+    <!-- Experience Section -->
     <section id="experience">
       <div class="container">
         <div class="section-header reveal">
@@ -749,12 +793,12 @@
         </div>
         
         <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.2rem;">Magang</h3>
-        <div class="timeline reveal" id="internship-container">
+        <div id="internship-container">
           <!-- Internship items rendered by JavaScript -->
         </div>
 
         <h3 style="color: var(--accent); margin: 3rem 0 1.5rem; font-size: 1.2rem;">Organisasi</h3>
-        <div class="timeline reveal" id="organization-container">
+        <div id="organization-container">
           <!-- Organization items rendered by JavaScript -->
         </div>
       </div>
@@ -768,12 +812,12 @@
           <p>Pengakuan atas dedikasi dan kompetensi di bidang pengembangan web.</p>
         </div>
         
-        <h3 style="color: #fefdfc; margin-bottom: 1.5rem; font-size: 1.2rem;">Penghargaan</h3>
+        <h3 style="color: #fcfbfa; margin-bottom: 1.5rem; font-size: 1.2rem;">Penghargaan</h3>
         <div class="grid-2col reveal" id="awards-container">
           <!-- Awards rendered by JavaScript -->
         </div>
 
-        <h3 style="color: #fafefd; margin: 3rem 0 1.5rem; font-size: 1.2rem;">Sertifikasi</h3>
+        <h3 style="color: #fdfefe; margin: 3rem 0 1.5rem; font-size: 1.2rem;">Sertifikasi</h3>
         <div class="grid-2col reveal" id="certification-container">
           <!-- Certifications rendered by JavaScript -->
         </div>
@@ -812,7 +856,7 @@
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> <span id="footer-name">Febriansyah</span>
+      <p>© <span id="year"></span> <span id="footer-name">Febriansyah</span> — Dibuat dengan ❤️</p>
     </div>
   </footer>
 
@@ -820,11 +864,10 @@
     // ============================================================
     // 1. GOOGLE SHEETS CONFIGURATION
     // ============================================================
-    // Ganti dengan URL Google Sheets API Anda
-    // Format: https://script.google.com/macros/s/SCRIPT_ID/exec
+    // Ganti dengan URL Google Apps Script Web App Anda
     const SHEETS_API_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
     
-    // Atau gunakan data lokal sebagai fallback
+    // Data lokal sebagai fallback (dengan foto)
     const LOCAL_DATA = {
       profile: {
         name: 'Febriansyah',
@@ -845,25 +888,55 @@
         ],
         contact_text: 'Punya ide atau proyek menarik? Saya siap membantu mewujudkannya. Kirim pesan dan saya akan segera merespons.',
         contacts: [
-          { type: 'email', label: '📧 febriansyah@email.com', url: 'mailto:febriansyah@email.com' },
-          { type: 'linkedin', label: '💼 LinkedIn', url: '#' },
-          { type: 'github', label: '🐙 GitHub', url: '#' }
+          { type: 'email', label: '📧 febriansyah@email.com', url: 'febriansyah@email.com' },
+          { type: 'linkedin', label: '💼 LinkedIn', url: 'https://linkedin.com/in/febriansyah' },
+          { type: 'github', label: '🐙 GitHub', url: 'https://github.com/febriansyah' }
         ]
       },
       education: [
-        { date: '2018 - 2022', title: 'S1 Informatika', subtitle: 'Universitas Teknologi Indonesia', description: 'IPK 3.85 - Fokus pada pengembangan web dan kecerdasan buatan.' }
+        { 
+          date: '2018 - 2022', 
+          title: 'S1 Informatika', 
+          subtitle: 'Universitas Teknologi Indonesia', 
+          description: 'IPK 3.85 - Fokus pada pengembangan web dan kecerdasan buatan.',
+          image: 'https://images.unsplash.com/photo-1523050854058-8df90110c7f1?auto=format&fit=crop&w=400&q=80'
+        }
       ],
       internship: [
-        { date: '2021 - 2022', title: 'Full Stack Developer Intern', subtitle: 'PT Teknologi Kreatif', description: 'Mengembangkan aplikasi web untuk manajemen inventaris perusahaan.' }
+        { 
+          date: '2021 - 2022', 
+          title: 'Full Stack Developer Intern', 
+          subtitle: 'PT Teknologi Kreatif', 
+          description: 'Mengembangkan aplikasi web untuk manajemen inventaris perusahaan dengan React dan Node.js.',
+          image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=400&q=80'
+        }
       ],
       organization: [
-        { date: '2020 - 2021', title: 'Ketua Divisi Web Development', subtitle: 'Himpunan Mahasiswa Informatika', description: 'Memimpin tim pengembangan website himpunan dan pelatihan web development.' }
+        { 
+          date: '2020 - 2021', 
+          title: 'Ketua Divisi Web Development', 
+          subtitle: 'Himpunan Mahasiswa Informatika', 
+          description: 'Memimpin tim pengembangan website himpunan dan pelatihan web development untuk 50+ anggota.',
+          image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=400&q=80'
+        }
       ],
       awards: [
-        { icon: '🥇', title: 'Juara 1 Hackathon Nasional', issuer: 'Kementerian Kominfo', date: '2022' }
+        { 
+          icon: '🥇', 
+          title: 'Juara 1 Hackathon Nasional', 
+          issuer: 'Kementerian Kominfo', 
+          date: '2022',
+          image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80'
+        }
       ],
       certification: [
-        { icon: '📘', title: 'Full Stack Web Development', issuer: 'Dicoding Indonesia', date: '2023' }
+        { 
+          icon: '📘', 
+          title: 'Full Stack Web Development', 
+          issuer: 'Dicoding Indonesia', 
+          date: '2023',
+          image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=400&q=80'
+        }
       ],
       projects: [
         { 
@@ -871,21 +944,24 @@
           label: 'E-Commerce Platform', 
           title: 'MarketHub', 
           description: 'Platform e-commerce modern dengan fitur real-time inventory, payment gateway, dan dashboard analytics untuk merchant.',
-          tags: ['React', 'Node.js', 'Tailwind']
+          tags: ['React', 'Node.js', 'Tailwind'],
+          image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80'
         },
         { 
           emoji: '📊', 
           label: 'Dashboard Analytics', 
           title: 'InsightPro', 
           description: 'Dashboard analytics interaktif untuk visualisasi data bisnis dengan chart real-time dan export laporan otomatis.',
-          tags: ['Next.js', 'TypeScript', 'API']
+          tags: ['Next.js', 'TypeScript', 'API'],
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
         },
         { 
           emoji: '📱', 
           label: 'Mobile App UI', 
           title: 'FitTrack', 
           description: 'Desain UI/UX untuk aplikasi kesehatan dan kebugaran dengan fokus pada pengalaman pengguna yang intuitif dan engaging.',
-          tags: ['Figma', 'UI/UX', 'Prototype']
+          tags: ['Figma', 'UI/UX', 'Prototype'],
+          image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80'
         }
       ]
     };
@@ -946,7 +1022,6 @@
       const aboutImg = document.getElementById('about-image');
       if (p.about_image) aboutImg.src = p.about_image;
       
-      // Stats
       const statsContainer = document.getElementById('stats-container');
       statsContainer.innerHTML = '';
       if (p.stats && p.stats.length > 0) {
@@ -962,69 +1037,76 @@
       document.getElementById('contact-text').textContent = p.contact_text || '';
     }
 
-    function renderEducation() {
-      const container = document.getElementById('education-container');
+    function renderTimelineItems(containerId, items, className = 'timeline') {
+      const container = document.getElementById(containerId);
       container.innerHTML = '';
-      const items = portfolioData.education || [];
+      if (!items || items.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Belum ada data.</p>';
+        return;
+      }
+      
+      const wrapper = document.createElement('div');
+      wrapper.className = className + ' reveal';
+      
       items.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'timeline-item reveal';
+        div.className = 'timeline-item';
+        
+        const imageHtml = item.image ? 
+          `<div class="timeline-image"><img src="${item.image}" alt="${item.title}" loading="lazy" /></div>` :
+          `<div class="timeline-image" style="display:flex;align-items:center;justify-content:center;font-size:2rem;">📷</div>`;
+        
         div.innerHTML = `
-          <div class="date">${item.date || ''}</div>
-          <h3>${item.title || ''}</h3>
-          <div class="subtitle">${item.subtitle || ''}</div>
-          <p>${item.description || ''}</p>
+          ${imageHtml}
+          <div class="timeline-content">
+            <div class="date">${item.date || ''}</div>
+            <h3>${item.title || ''}</h3>
+            <div class="subtitle">${item.subtitle || ''}</div>
+            <p>${item.description || ''}</p>
+          </div>
         `;
-        container.appendChild(div);
+        wrapper.appendChild(div);
       });
+      
+      container.appendChild(wrapper);
+    }
+
+    function renderEducation() {
+      renderTimelineItems('education-container', portfolioData.education);
     }
 
     function renderInternship() {
-      const container = document.getElementById('internship-container');
-      container.innerHTML = '';
-      const items = portfolioData.internship || [];
-      items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'timeline-item reveal';
-        div.innerHTML = `
-          <div class="date">${item.date || ''}</div>
-          <h3>${item.title || ''}</h3>
-          <div class="subtitle">${item.subtitle || ''}</div>
-          <p>${item.description || ''}</p>
-        `;
-        container.appendChild(div);
-      });
+      renderTimelineItems('internship-container', portfolioData.internship);
     }
 
     function renderOrganization() {
-      const container = document.getElementById('organization-container');
-      container.innerHTML = '';
-      const items = portfolioData.organization || [];
-      items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'timeline-item reveal';
-        div.innerHTML = `
-          <div class="date">${item.date || ''}</div>
-          <h3>${item.title || ''}</h3>
-          <div class="subtitle">${item.subtitle || ''}</div>
-          <p>${item.description || ''}</p>
-        `;
-        container.appendChild(div);
-      });
+      renderTimelineItems('organization-container', portfolioData.organization);
     }
 
     function renderAwards() {
       const container = document.getElementById('awards-container');
       container.innerHTML = '';
       const items = portfolioData.awards || [];
+      if (items.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1;">Belum ada data.</p>';
+        return;
+      }
+      
       items.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'card-item reveal';
+        div.className = 'card-item';
+        
+        const imageHtml = item.image ? 
+          `<div class="card-image"><img src="${item.image}" alt="${item.title}" loading="lazy" /></div>` :
+          `<div class="card-image" style="display:flex;align-items:center;justify-content:center;font-size:2.5rem;">${item.icon || '🏆'}</div>`;
+        
         div.innerHTML = `
-          <span class="icon">${item.icon || '🏆'}</span>
-          <h4>${item.title || ''}</h4>
-          <div class="issuer">${item.issuer || ''}</div>
-          <div class="date">${item.date || ''}</div>
+          ${imageHtml}
+          <div class="card-content">
+            <h4>${item.title || ''}</h4>
+            <div class="issuer">${item.issuer || ''}</div>
+            <div class="date">${item.date || ''}</div>
+          </div>
         `;
         container.appendChild(div);
       });
@@ -1034,14 +1116,26 @@
       const container = document.getElementById('certification-container');
       container.innerHTML = '';
       const items = portfolioData.certification || [];
+      if (items.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1;">Belum ada data.</p>';
+        return;
+      }
+      
       items.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'card-item reveal';
+        div.className = 'card-item';
+        
+        const imageHtml = item.image ? 
+          `<div class="card-image"><img src="${item.image}" alt="${item.title}" loading="lazy" /></div>` :
+          `<div class="card-image" style="display:flex;align-items:center;justify-content:center;font-size:2.5rem;">${item.icon || '📜'}</div>`;
+        
         div.innerHTML = `
-          <span class="icon">${item.icon || '📜'}</span>
-          <h4>${item.title || ''}</h4>
-          <div class="issuer">${item.issuer || ''}</div>
-          <div class="date">${item.date || ''}</div>
+          ${imageHtml}
+          <div class="card-content">
+            <h4>${item.title || ''}</h4>
+            <div class="issuer">${item.issuer || ''}</div>
+            <div class="date">${item.date || ''}</div>
+          </div>
         `;
         container.appendChild(div);
       });
@@ -1051,13 +1145,22 @@
       const container = document.getElementById('projects-container');
       container.innerHTML = '';
       const items = portfolioData.projects || [];
+      if (items.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; grid-column: 1/-1;">Belum ada data.</p>';
+        return;
+      }
+      
       items.forEach(item => {
         const div = document.createElement('article');
-        div.className = 'project-card reveal';
+        div.className = 'project-card';
+        
+        const imageHtml = item.image ? 
+          `<img src="${item.image}" alt="${item.title}" loading="lazy" />` :
+          `<span class="emoji-bg">${item.emoji || '📁'}</span><span class="label">${item.label || 'Proyek'}</span>`;
+        
         div.innerHTML = `
           <div class="project-thumb">
-            <span class="emoji-bg">${item.emoji || '📁'}</span>
-            <span class="label">${item.label || 'Proyek'}</span>
+            ${imageHtml}
           </div>
           <div class="project-body">
             <h3>${item.title || ''}</h3>
@@ -1077,13 +1180,13 @@
       const items = portfolioData.profile?.contacts || [];
       items.forEach(item => {
         const a = document.createElement('a');
-        a.href = item.url || '#';
         a.className = item.type === 'email' ? 'btn btn-primary' : 'btn btn-ghost';
         a.textContent = item.label || '';
+        
         if (item.type === 'email') {
-          a.href = `mailto:${item.url.replace('mailto:', '')}`;
-        }
-        if (item.type === 'linkedin' || item.type === 'github') {
+          a.href = `mailto:${item.url || ''}`;
+        } else {
+          a.href = item.url || '#';
           a.target = '_blank';
           a.rel = 'noopener';
         }
@@ -1125,7 +1228,7 @@
         navLinks.style.top = '72px';
         navLinks.style.left = '0';
         navLinks.style.right = '0';
-        navLinks.style.background = 'rgba(15, 23, 42, 0.95)';
+        navLinks.style.background = 'rgba(0, 5, 15, 0.95)';
         navLinks.style.backdropFilter = 'blur(12px)';
         navLinks.style.padding = '2rem 1.5rem';
         navLinks.style.gap = '1.5rem';
