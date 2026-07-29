@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Febriansyah - Portofolio</title>
-  <meta name="description" content="Portofolio profesional Febriansyah - Pengembang Web & Desainer UI/UX" />
+  <meta name="description" content="Portofolio profesional Febriansyah" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,10 +14,10 @@
       --surface: #1a2332;
       --surface-2: #2a3a52;
       --text: #f8fafc;
-      --text-muted: #c8d0dc;
-      --primary: #f3f4f6;
-      --primary-2: #fcfdff;
-      --accent: #f8fbfa;
+      --text-muted: #f8fafd;
+      --primary: #f6f7f7;
+      --primary-2: #eff0f3;
+      --accent: #f2f7f5;
       --radius: 1rem;
       --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       --max-width: 1120px;
@@ -195,12 +195,6 @@
       font-weight: 800;
       letter-spacing: -0.04em;
       margin-bottom: 1.25rem;
-    }
-
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .hero h1 .name {
@@ -694,7 +688,7 @@
         <div class="reveal">
           <p class="hero-subtitle" id="hero-subtitle">Halo, saya</p>
           <h1>
-            <span class="name" id="hero-name">Febriansyah</span><br />
+            <span class="name" id="hero-name">Febriansyah</span>
           </h1>
           <p id="hero-description">
             Saya membangun pengalaman digital yang elegan, fungsional, dan berorientasi pada hasil.
@@ -775,12 +769,12 @@
           <p>Pengakuan atas dedikasi dan kompetensi di bidang pengembangan web.</p>
         </div>
         
-        <h3 style="color: #f8f7f7; margin-bottom: 1.5rem; font-size: 1.2rem;">Penghargaan</h3>
+        <h3 style="color: #fdfcfa; margin-bottom: 1.5rem; font-size: 1.2rem;">Penghargaan</h3>
         <div class="grid-2col reveal" id="awards-container">
           <!-- Awards rendered by JavaScript -->
         </div>
 
-        <h3 style="color: #f6faf8; margin: 3rem 0 1.5rem; font-size: 1.2rem;">Sertifikasi</h3>
+        <h3 style="color: #fafdfc; margin: 3rem 0 1.5rem; font-size: 1.2rem;">Sertifikasi</h3>
         <div class="grid-2col reveal" id="certification-container">
           <!-- Certifications rendered by JavaScript -->
         </div>
@@ -819,7 +813,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> <span id="footer-name">Febriansyah</span>
+      <p>&copy; <span id="year"></span> <span id="footer-name">Febriansyah</span> &mdash; Dibuat dengan sepenuh hati</p>
     </div>
   </footer>
 
@@ -830,7 +824,7 @@
     const SHEET_URLS = {
       profile: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=0&single=true&output=csv',
       education: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=225249204&single=true&output=csv',
-      internship: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=314849816&single=true&output=csv',
+      internship: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=4&single=true&output=csv',
       organization: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=498639503&single=true&output=csv',
       awards: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=100740730&single=true&output=csv',
       certification: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMeWio_SR8i1KWkccqR7FnBB6CMhauYa0XVQmdu2DXiy1yr-uDGYbvWtdsMxUEyig5fB7sxmcMythp/pub?gid=409936969&single=true&output=csv',
@@ -984,10 +978,9 @@
       return {
         profile: {
           name: 'Febriansyah',
-          title: 'Web Developer',
           subtitle: 'Halo, saya',
           description: 'Saya membangun pengalaman digital yang elegan, fungsional, dan berorientasi pada hasil.',
-          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+          image: 'feb.png',
           about_sub: 'Tentang Saya',
           about_title: 'Membangun Solusi Digital',
           about_text1: 'Saya Febriansyah, seorang pengembang web yang berdedikasi dengan pengalaman lebih dari 5 tahun.',
@@ -1035,7 +1028,6 @@
       
       document.getElementById('hero-subtitle').textContent = p.subtitle || 'Halo, saya';
       document.getElementById('hero-name').textContent = p.name || 'Febriansyah';
-      document.getElementById('hero-title').textContent = p.title || 'Web Developer';
       document.getElementById('hero-description').textContent = p.description || '';
       
       const heroImg = document.getElementById('hero-image');
